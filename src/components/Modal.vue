@@ -1,12 +1,25 @@
 <template>
-    <div class="backdrop">
+    <div class="backdrop" @click="closeModel">
         <div class="modal">
-            <p>Modal content here</p>
+             <h1>{{header}}</h1>
+            <p>{{text}}</p>
         </div>
     </div>
 </template>
-
-<style>
+<script>
+export default {
+  props:[
+    'header',
+    'text'
+  ],
+   methods:{
+    closeModel(){
+      this.$emit('close')
+    }
+  }
+}
+</script>
+<style scoped>
 .backdrop {
   position: fixed;
   top: 0;
@@ -38,5 +51,13 @@
   animation: slideFadeIn 0.3s ease;
 }
 
-
+h1 {
+color:purple; /* deep green */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(46, 125, 50, 0.2); /* soft shadow for depth */
+  letter-spacing: 0.5px;
+}
 </style>
