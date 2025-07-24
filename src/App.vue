@@ -1,18 +1,21 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+      <h1>{{ title }}</h1>
+      <Modal/>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Modal from './components/Modal.vue';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components:{ Modal },
+  data() {
+    return {
+      title:'MY FIRST VUE JS APP'
+    }
+  },
 }
 </script>
 
@@ -25,4 +28,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+h1 {
+  border-bottom: 2px solid #333; /* Dark gray line */
+  padding-bottom: 0.5em;         /* Space between text and border */
+  margin-bottom: 1em;            /* Space below the header */
+  color: royalblue;
+}
+
 </style>
