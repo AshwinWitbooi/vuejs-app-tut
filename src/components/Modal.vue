@@ -1,17 +1,16 @@
 <template>
-    <div class="backdrop" @click="closeModel">
-        <div class="modal">
-             <h1>{{header}}</h1>
-            <p>{{text}}</p>
+    <div class="backdrop" @click.self="closeModel">
+        <div class="modal">          
+          <slot></slot>
+          <div class="actions">
+            <slot name="links"></slot>
+          </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-  props:[
-    'header',
-    'text'
-  ],
+  props:[],
    methods:{
     closeModel(){
       this.$emit('close')
@@ -50,6 +49,39 @@ export default {
 
   animation: slideFadeIn 0.3s ease;
 }
+
+/* Base link styles in modal */
+.actions a {
+  color: #1e90ff; /* Dodger Blue */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  padding-right: 20px;
+}
+
+/* Hover state */
+.actions a:hover {
+  color: #0a75c2;
+  text-decoration: underline;
+}
+
+/* Focus state for accessibility */
+.actions a:focus {
+  outline: 2px dashed #0a75c2;
+  outline-offset: 3px;
+  color: #0a75c2;
+}
+
+/* Visited state (optional) */
+.actions a:visited {
+  color: #6a5acd; /* Slate Blue */
+}
+
+/* Active state */
+.actions a:active {
+  color: #003f7d;
+}
+
 
 h1 {
 color:purple; /* deep green */
